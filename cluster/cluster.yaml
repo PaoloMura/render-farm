@@ -1,0 +1,25 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: worker-cluster
+  region: us-east-1
+
+vpc:
+  id: vpc-01fca23e5288154b1
+  cidr: "192.168.0.0/16"
+  subnets:
+    private:
+      us-east-1a: { id: subnet-0eea75c79f5df3c60 }
+      us-east-1b: { id: subnet-0386c429d2f4814cd }
+    public:
+      us-east-1a: { id: subnet-04c07b9740a5f5778 }
+      us-east-1b: { id: subnet-0b172c3c2b739427f }
+
+managedNodeGroups:
+  - name: ng-private
+    instanceType: m5.large
+    desiredCapacity: 6
+    minSize: 3
+    maxSize: 8
+    privateNetworking: true

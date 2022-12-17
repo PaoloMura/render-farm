@@ -1,0 +1,44 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Stmt1428341300017",
+            "Action": [
+                "dynamodb:DeleteItem",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:UpdateItem"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Sid": "",
+            "Resource": "*",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "sqs:SendMessage",
+                "sqs:GetQueueAttributes",
+                "sqs:GetQueueURL"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:sqs:us-east-1:643080896915:JobQueue"
+        },
+        {
+            "Resource": "*",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
